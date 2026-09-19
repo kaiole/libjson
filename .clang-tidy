@@ -1,0 +1,60 @@
+---
+Checks: >-
+  -*,
+  clang-analyzer-*,
+  bugprone-*,
+  concurrency-*,
+  cppcoreguidelines-*,
+  misc-*,
+  modernize-*,
+  performance-*,
+  readability-*,
+  -bugprone-easily-swappable-parameters,
+  -cppcoreguidelines-avoid-do-while,
+  -cppcoreguidelines-avoid-magic-numbers,
+  -cppcoreguidelines-init-variables,
+  -cppcoreguidelines-owning-memory,
+  -misc-no-recursion,
+  -modernize-return-braced-init-list,
+  -modernize-use-auto,
+  -modernize-use-trailing-return-type,
+  -readability-function-size,
+  -readability-identifier-length,
+  -readability-magic-numbers,
+  -readability-named-parameter
+
+WarningsAsErrors: ''
+ExtraArgs: ['-Wimplicit-fallthrough']
+HeaderFilterRegex: '.*'
+FormatStyle: file
+
+CheckOptions:
+  modernize-use-nullptr.NullMacros: 'NULL'
+  modernize-use-designated-initializers.IgnoreSingleElementAggregates: false
+  readability-braces-around-statements.ShortStatementLines: 0
+  readability-function-cognitive-complexity.Threshold: 25
+  readability-implicit-bool-conversion.AllowIntegerConditions: true
+  readability-implicit-bool-conversion.AllowPointerConditions: true
+  cppcoreguidelines-non-private-member-variables-in-classes.IgnoreClassesWithAllMemberVariablesBeingPublic: true
+  misc-const-correctness.AnalyzePointers: false
+  misc-const-correctness.AnalyzeReferences: false
+  misc-const-correctness.AnalyzeValues: true
+
+  readability-identifier-naming.ClassCase: lower_case
+  readability-identifier-naming.StructCase: lower_case
+  readability-identifier-naming.EnumCase: lower_case
+  readability-identifier-naming.EnumConstantCase: UPPER_CASE
+  readability-identifier-naming.NamespaceCase: lower_case
+  readability-identifier-naming.FunctionCase: lower_case
+  readability-identifier-naming.VariableCase: lower_case
+  readability-identifier-naming.ParameterCase: lower_case
+  readability-identifier-naming.ConstantCase: lower_case
+  readability-identifier-naming.PrivateMemberCase: lower_case
+  readability-identifier-naming.PrivateMemberPrefix: 'm_'
+  readability-identifier-naming.ProtectedMemberCase: lower_case
+  readability-identifier-naming.ProtectedMemberPrefix: 'm_'
+  readability-identifier-naming.PublicMemberCase: lower_case
+  readability-identifier-naming.MacroDefinitionCase: UPPER_CASE
+  readability-identifier-naming.TypeAliasCase: lower_case
+  readability-identifier-naming.TypeAliasIgnoredRegexp: '^T$'
+  readability-identifier-naming.TemplateParameterCase: CamelCase
