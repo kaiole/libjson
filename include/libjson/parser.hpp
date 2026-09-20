@@ -4,7 +4,9 @@
 #include "libjson/parse_error.hpp"
 
 #include <cstddef>
+#include <cstdint>
 #include <expected>
+#include <string>
 #include <string_view>
 
 namespace libjson {
@@ -22,8 +24,12 @@ private:
     [[nodiscard]] bool at_end() noexcept;
     [[nodiscard]] char peek() noexcept;
     char               advance() noexcept;
-    void               consume() noexcept;
+    void               consume(char c) noexcept;
     void               skip_whitespace() noexcept;
+
+    [[nodiscard]] parse_result<std::uint16_t> parse_hex_code_unit();
+    [[nodiscard]] parse_result<std::uint32_t> parse_unicode_escape();
+    [[nodiscard]] parse_result<void>          parse_escape(std::string& output);
 
     [[nodiscard]] parse_result<json_value> parse_value();
 

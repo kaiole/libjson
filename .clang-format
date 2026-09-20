@@ -19,7 +19,7 @@ DerivePointerAlignment: false
 
 BreakBeforeBraces: Attach
 AllowShortBlocksOnASingleLine: Never
-AllowShortCaseLabelsOnASingleLine: false
+AllowShortCaseLabelsOnASingleLine: true
 AllowShortFunctionsOnASingleLine: Empty
 AllowShortIfStatementsOnASingleLine: Never
 AllowShortLambdasOnASingleLine: All
@@ -57,7 +57,7 @@ SortIncludes: CaseSensitive
 IncludeCategories:
   - Regex: '^"'
     Priority: 1
-  - Regex: '^<'
+  - Regex: "^<"
     Priority: 2
 
 SortUsingDeclarations: Never
