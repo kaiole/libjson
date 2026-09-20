@@ -30,6 +30,8 @@ private:
     [[nodiscard]] parse_result<std::uint16_t> parse_hex_code_unit();
     [[nodiscard]] parse_result<std::uint32_t> parse_unicode_escape();
     [[nodiscard]] parse_result<void>          parse_escape(std::string& output);
+    [[nodiscard]] parse_result<void>          parse_utf8(unsigned char lead,
+                                                         std::string&  output);
 
     [[nodiscard]] parse_result<json_value> parse_value();
 
