@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.27)
 project(
   libjson
-  VERSION 0.0.0
+  VERSION 1.0.0
   DESCRIPTION "Small C++ JSON library"
   LANGUAGES CXX)
 
@@ -12,9 +12,6 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 add_library(libjson src/libjson/parser.cpp src/libjson/serializer.cpp)
 target_include_directories(libjson PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
-
-add_executable(json src/main.cpp)
-target_link_libraries(json PRIVATE libjson)
 
 include(CTest)
 if(BUILD_TESTING)
