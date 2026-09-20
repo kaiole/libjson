@@ -10,8 +10,12 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-add_library(libjson src/libjson/parser.cpp src/libjson/serializer.cpp)
-target_include_directories(libjson PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
+add_library(libjson STATIC src/libjson/parser.cpp src/libjson/serializer.cpp)
+add_library(libjson::libjson ALIAS libjson)
+
+set_target_properties(libjson PROPERTIES POSITION_INDEPENDENT_CODE ON)
+target_compile_features(libjson PUBLIC cxx_std_23)
+target_include_directories(libjson PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include")
 
 include(CTest)
 if(BUILD_TESTING)
