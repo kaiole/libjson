@@ -17,8 +17,16 @@ set_target_properties(libjson PROPERTIES POSITION_INDEPENDENT_CODE ON)
 target_compile_features(libjson PUBLIC cxx_std_23)
 target_include_directories(libjson PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include")
 
-include(CTest)
-if(BUILD_TESTING)
+set(libjson_top_level OFF)
+if(CMAKE_SOURCE_DIR STREQUAL PROJECT_SOURCE_DIR)
+  set(libjson_top_level ON)
+endif()
+option(LIBJSON_BUILD_TESTS "Build libjson tests" ${libjson_top_level})
+
+if(LIBJSON_BUILD_TESTS)
+  include(CTest)
+endif()
+if(LIBJSON_BUILD_TESTS AND BUILD_TESTING)
   add_executable(parser_tests tests/parser_tests.cpp)
   target_link_libraries(parser_tests PRIVATE libjson)
   foreach(

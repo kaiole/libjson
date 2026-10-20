@@ -21,6 +21,10 @@ cmake --build build
 ctest --test-dir build --output-on-failure
 ```
 
+`LIBJSON_BUILD_TESTS` defaults to `ON` for standalone builds and `OFF` when
+included by another project. Set `-DLIBJSON_BUILD_TESTS=ON` to opt in when
+embedded, or `OFF` to disable them. Tests also require `BUILD_TESTING=ON`.
+
 ## Usage
 
 Link against the `libjson` CMake target.
